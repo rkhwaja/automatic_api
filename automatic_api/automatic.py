@@ -27,7 +27,7 @@ class Automatic:
 		self.session = OAuth2Session(self.clientId, token=token, auto_refresh_kwargs=extra, auto_refresh_url=Automatic.tokenUrl, token_updater=self.TokenSaver)
 
 	def Authorize(self):
-		scopeString = quote(" ".split(["scope:" + scope for scope in self.scopes]))
+		scopeString = quote(" ".join(["scope:" + scope for scope in self.scopes]))
 		authorizationBaseUrl = "https://accounts.automatic.com/oauth/authorize/?response_type=code&scope=" + scopeString
 
 		session = OAuth2Session(self.clientId)
@@ -68,3 +68,17 @@ class Automatic:
 			page += 1
 			allTrips.extend(trips["results"])
 		return allTrips
+
+	def Vehicles(self):
+		response = self.session.get(Automatic.baseUrl + "vehicle/", timeout=60)
+		return response.json()["results"]
+
+def Test():
+	from logging import info
+	from pprint import pformat
+
+	clientId = ""
+	clientSecret = ""
+	scopes = ["public", "location", "vehicle:profile", "vehicle:events", "trip"]
+	automatic = Automatic(clientId, clientSecret, "test.json", scopes=scopes)
+	info(pformat(automatic.Vehicles()))

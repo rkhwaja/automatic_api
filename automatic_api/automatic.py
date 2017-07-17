@@ -61,7 +61,6 @@ class Automatic:
 			debug("Getting page {} items so far = {}".format(page, len(allTrips)))
 			response = self.session.get(Automatic.baseUrl + "trip/", params={"limit": limit, "page": page}, timeout=60)
 			trips = response.json()
-			debug("Total items: {}".format(trips["_metadata"]["count"]))
 			if "results" not in trips or len(trips["results"]) < limit:
 				break
 			debug("Got {} trips".format(len(trips["results"])))

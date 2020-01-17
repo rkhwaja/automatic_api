@@ -53,10 +53,10 @@ class Automatic:
 		with open(self.tokenPath, "w") as f:
 			dump(token, f)
 
-	def Trips(self):
+	def Trips(self, skip=0):
 		limit = 250
 		allTrips = []
-		page = 1
+		page = 1 + int(skip / limit)
 		while True:
 			debug("Getting page {} items so far = {}".format(page, len(allTrips)))
 			response = self.session.get(Automatic.baseUrl + "trip/", params={"limit": limit, "page": page}, timeout=60)

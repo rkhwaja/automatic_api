@@ -7,7 +7,7 @@ with open("README.rst") as f:
 
 # package names should be camel case, according to [http://the-hitchhikers-guide-to-packaging.readthedocs.org/en/latest/creation.html]
 setup(name='AutomaticAPI',
-	version="0.2",
+	version="0.3",
 	description="Python support for the Automatic API which is documented at https://developer.automatic.com/documentation/",
 	long_description=long_description,
 	author="Rehan Khwaja",

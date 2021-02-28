@@ -1,3 +1,7 @@
+Archived project
+================
+The Automatic company has shutdown so this project is archived
+
 Overview
 ========
 Python support for the Automatic API which is documented at https://developer.automatic.com/documentation/
